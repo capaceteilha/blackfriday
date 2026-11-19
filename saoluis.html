@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Black Friday São Luís · Capacete Ilha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: loja de rua em noite de Black Friday, direta e confiante, preço falando alto.
+IDEA: vitrine com etiquetas de remarcação: preço antigo riscado, preço novo grande.
+PICTURE: grade de produtos recortados, flutuando em cartões de vidro sobre o azul da Capacete Ilha.
+COLOUR and TYPE: azul da marca #0036D2 dominante, preto de apoio, branco translúcido. Archivo 900 nos preços.
+LAYOUT: faixa preta de validade fixa, capa com logo, filtros (tipo, marca, ordem), grade 2 colunas no celular e até 5 no computador.
+*/
+:root{color-scheme:light;--blue:#0036D2;--blue2:#002BA8;--ink:#0A0A0A;--white:#fff}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--blue);color:#fff;font:16px/1.5 Archivo,system-ui,sans-serif;overflow-x:clip}
+.valid{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff;text-align:center;padding:10px 16px;font-weight:800;font-size:clamp(14px,2.4vw,18px)}
+.valid b{background:#fff;color:var(--ink);padding:2px 8px;border-radius:4px;white-space:nowrap}
+header{padding:clamp(28px,5vw,56px) max(5vw,16px) clamp(20px,3vw,32px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;max-width:1320px;margin:0 auto}
+header img{width:clamp(120px,18vw,210px);height:auto;display:block}
+.bf{font-weight:900;font-size:clamp(44px,9vw,108px);line-height:.9;margin:0;letter-spacing:-.02em;text-transform:uppercase}
+.bf span{display:inline-block;background:var(--ink);padding:0 .14em .04em;margin-top:.06em}
+.sub{margin:14px 0 0;font-size:clamp(16px,2vw,20px);font-weight:600;max-width:62ch}
+.dates{margin-top:18px;display:inline-flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;background:#fff;color:var(--ink);border-radius:10px;padding:12px 16px;font-weight:900;font-size:clamp(17px,2.4vw,24px)}
+.dates small{font-weight:600;font-size:14px;color:#444}
+.bar{max-width:1320px;margin:0 auto;padding:0 max(5vw,16px) 8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{appearance:none;border:2px solid #fff;background:transparent;color:#fff;font:700 15px Archivo,sans-serif;border-radius:999px;padding:9px 16px;min-height:44px;cursor:pointer}
+.chip[aria-pressed=true]{background:#fff;color:var(--blue)}
+.sel{appearance:none;font:700 15px Archivo,sans-serif;min-height:44px;border-radius:999px;border:2px solid #fff;background-color:var(--ink);color:#fff;padding:9px 34px 9px 16px;background-image:linear-gradient(45deg,transparent 50%,#fff 50%),linear-gradient(135deg,#fff 50%,transparent 50%);background-position:calc(100% - 18px) 52%,calc(100% - 12px) 52%;background-size:6px 6px;background-repeat:no-repeat}
+.chip:focus-visible,.sel:focus-visible,.wa:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.sec{max-width:1320px;margin:0 auto;padding:8px max(5vw,16px)}
+.sec h2{font-weight:900;font-size:clamp(26px,4vw,40px);line-height:1.05;margin:22px 0 2px;text-transform:uppercase}
+.sec p.d{margin:0 0 14px;font-weight:600;opacity:.9}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:14px}
+.card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.28);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.ph{aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:10px;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.72) 0,rgba(255,255,255,.42) 55%,rgba(255,255,255,.16) 100%)}
+.ph .nofoto{font-weight:900;font-size:clamp(22px,3vw,30px);color:var(--blue);text-transform:uppercase;text-align:center;line-height:1.05;opacity:.9}
+.ph img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 8px 10px rgba(0,0,0,.28))}
+.off{position:absolute;top:10px;left:10px;background:var(--ink);color:#fff;font-weight:900;font-size:clamp(14px,2.2vw,18px);padding:5px 9px;border-radius:8px;line-height:1}
+.bd{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;flex:1}
+.br{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;opacity:.85}
+.nm{font-weight:700;font-size:15px;line-height:1.25;min-height:2.5em}
+.tg{font-size:13px;font-weight:600;opacity:.85}
+.vis{align-self:flex-start;margin-top:8px;background:var(--ink);color:#fff;font-size:12px;font-weight:800;padding:3px 7px;border-radius:6px;line-height:1.3}
+.was{margin-top:8px;font-size:15px;font-weight:600;white-space:nowrap;opacity:.9}
+.was s{text-decoration-thickness:2px}
+.now{font-weight:900;font-size:clamp(25px,3.6vw,33px);line-height:1;white-space:nowrap;letter-spacing:-.02em}
+.now small{font-size:.5em;font-weight:800;vertical-align:.45em;margin-right:2px}
+.lab{font-size:12px;font-weight:800;text-transform:uppercase;margin-top:6px;opacity:.9}
+.cart{font-size:14px;font-weight:700;white-space:nowrap;margin-top:6px;background:rgba(0,0,0,.35);border-radius:6px;padding:3px 7px;align-self:flex-start}
+.cart{display:flex;flex-direction:column;line-height:1.25;white-space:normal}.cart span{font-size:12px;font-weight:700}.cart b{font-weight:900;font-size:17px;white-space:nowrap}
+.sp{height:12px}
+.wa{display:flex;align-items:center;justify-content:center;min-height:44px;background:#fff;color:var(--blue);text-decoration:none;font-weight:900;font-size:14px;border-radius:10px;margin-top:auto}
+.wa:hover{background:#E8EDFB}
+.empty{padding:40px 0;font-weight:700}
+footer{background:var(--ink);margin-top:40px;padding:32px max(5vw,16px);text-align:center;font-weight:600}
+footer .big{font-weight:900;font-size:clamp(20px,3vw,28px);margin-bottom:6px}
+footer p{margin:6px auto;max-width:70ch;opacity:.9}
+@media(max-width:600px){header{grid-template-columns:1fr;gap:14px}header img{width:110px}.valid .lj{display:none}.wa .lg{display:none}.bd{padding:9px 10px 10px}.nm{font-size:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.sel{flex:1 1 140px}.cart{font-size:12px;white-space:normal}}
+@media (prefers-reduced-motion:no-preference){.card{transition:transform .15s}.card:hover{transform:translateY(-3px)}}
+</style>
+</head>
+<body>
+<div class="valid">Preços válidos somente de <b>25/11 a 01/12</b> <span class="lj">· Loja Capacete Ilha São Luís</span></div>
+<header>
+  <img src="logo_branco.png" alt="Capacete Ilha">
+  <div>
+    <h1 class="bf">Black <span>Friday</span></h1>
+    <p class="sub">36 modelos de capacete e 34 itens de vestuário, acessórios e peças com preço de Black Friday na loja de São Luís. Preço antigo riscado, preço novo em destaque.</p>
+    <div class="dates">De 25 de novembro a 1º de dezembro <small>preços exclusivos da loja física de São Luís</small></div>
+  </div>
+</header>
+<div class="bar" id="chips"></div>
+<div class="bar" id="ctl"></div>
+<main id="main"></main>
+<footer>
+  <div class="big">Black Friday Capacete Ilha São Luís · 25/11 a 01/12</div>
+  <p>Fotos ilustrativas: cada modelo pode ter outras cores e grafismos na loja. Capacetes FW3 e LS2 FF358 não acompanham viseira colorida. Vestuário, acessórios e peças com 15% de desconto à vista e 10% no cartão.</p>
+  <p>Preços válidos somente na loja física de São Luís, de 25/11 a 01/12, enquanto durar o estoque. Consulte tamanhos e cores disponíveis pelo WhatsApp (98) 98716-5833.</p>
+</footer>
+<script>
+{
+const ITEMS=[{"id": "001", "b": "AGV", "n": "K1S VR46 Sky Racing Team", "g": "Capacetes", "o": 1799.9, "sz": "58", "img": "s-001.webp", "p": 1480.0, "cap": 1, "vis": false}, {"id": "002", "b": "ASX", "n": "City Arrow", "g": "Capacetes", "o": 499.99, "sz": "56", "img": "s-002.webp", "p": 399.9, "cap": 1, "vis": false}, {"id": "003", "b": "ASX", "n": "City SV Solid (preto fosco e brilho)", "g": "Capacetes", "o": 599.9, "sz": "58, 60, 62, 64", "img": "s-003.webp", "p": 539.9, "cap": 1, "pv": 499.9, "vis": false}, {"id": "007", "b": "FW3", "n": "GTX Star c/ óculos", "g": "Capacetes", "o": 599.9, "sz": "56, 58, 60", "img": "s-007.webp", "p": 549.9, "cap": 1, "pv": 519.9, "vis": true}, {"id": "010", "b": "GOW", "n": "City", "g": "Capacetes", "o": 149.9, "sz": "56, 58, 60", "img": "s-010.webp", "p": 99.9, "cap": 1, "vis": false}, {"id": "011", "b": "GOW", "n": "Infantil (Hero Girl, Fast Kids, Robot, Sweet)", "g": "Capacetes", "o": 129.9, "sz": "54", "img": "s-011.webp", "p": 99.9, "cap": 1, "vis": false}, {"id": "012", "b": "GOW", "n": "Interlagos", "g": "Capacetes", "o": 139.9, "sz": "56, 58, 60", "img": "s-012.webp", "p": 94.9, "cap": 1, "vis": false}, {"id": "013", "b": "LS2", "n": "OF616 Airflow II", "g": "Capacetes", "o": 699.9, "sz": "56, 58, 60", "img": "s-013.webp", "p": 525.0, "cap": 1, "pv": 499.9, "vis": false}, {"id": "017", "b": "LS2", "n": "FF353 Rapid (Monocolor, Stratus, Rokku, Xtreet)", "g": "Capacetes", "o": 899.9, "sz": "58, 60, 62", "img": "s-017.webp", "p": 699.9, "cap": 1, "pv": 549.9, "vis": false}, {"id": "019", "b": "LS2", "n": "FF358 Draze Grey/Green/Pink", "g": "Capacetes", "o": 1199.9, "sz": "56", "img": "s-019.webp", "p": 800.0, "cap": 1, "vis": true}, {"id": "021", "b": "LS2", "n": "FF358 Pro (Airline, Moon)", "g": "Capacetes", "o": 899.9, "sz": "54, 56, 58, 62", "img": "s-021.webp", "p": 729.9, "cap": 1, "vis": true}, {"id": "022", "b": "LS2", "n": "FF358 Rafael Paschoalin", "g": "Capacetes", "o": 899.9, "sz": "56, 60", "img": "s-022.webp", "p": 699.9, "cap": 1, "pv": 649.9, "vis": true}, {"id": "023", "b": "LS2", "n": "FF358 S (Digital, Striker)", "g": "Capacetes", "o": 799.9, "sz": "56, 60", "img": "s-023.webp", "p": 629.9, "cap": 1, "vis": true}, {"id": "025", "b": "LS2", "n": "FF358 Tank Cam/Blk/Pur", "g": "Capacetes", "o": 1199.9, "sz": "54, 58", "img": "s-025.webp", "p": 799.9, "cap": 1, "vis": true}, {"id": "026", "b": "LS2", "n": "FF358 Tank Matte Black/Orange", "g": "Capacetes", "o": 799.9, "sz": "56", "img": "s-026.webp", "p": 629.9, "cap": 1, "vis": true}, {"id": "027", "b": "LS2", "n": "FF358 Tribal Fúcsia", "g": "Capacetes", "o": 1199.9, "sz": "58", "img": "s-027.webp", "p": 799.9, "cap": 1, "vis": true}, {"id": "029", "b": "LS2", "n": "FF358 Xdron Cyan", "g": "Capacetes", "o": 1199.9, "sz": "60", "img": "s-029.webp", "p": 799.9, "cap": 1, "vis": true}, {"id": "030", "b": "LS2", "n": "FF358 Xdron Orange", "g": "Capacetes", "o": 1199.9, "sz": "56", "img": "s-030.webp", "p": 799.9, "cap": 1, "vis": true}, {"id": "031", "b": "LS2", "n": "FF358 Xdron Neon Orange", "g": "Capacetes", "o": 1200.0, "sz": "56, 58, 60, 62", "img": "s-031.webp", "p": 799.9, "cap": 1, "vis": true}, {"id": "032", "b": "LS2", "n": "FF810 Vigo (Shift, Sarbul)", "g": "Capacetes", "o": 799.9, "sz": "58, 60", "img": "s-032.webp", "p": 629.9, "cap": 1, "pv": 619.9, "vis": false}, {"id": "033", "b": "LS2", "n": "FF810 Vigo (Spinn, Vision)", "g": "Capacetes", "o": 850.0, "sz": "56, 58", "img": "s-033.webp", "p": 629.9, "cap": 1, "vis": false}, {"id": "034", "b": "LS2", "n": "FF808 Stream II (Thunder, Road)", "g": "Capacetes", "o": 1199.9, "sz": "56, 58, 60", "img": "s-034.webp", "p": 949.9, "cap": 1, "vis": false}, {"id": "035", "b": "LS2", "n": "FF808 Stream II Monocolor White", "g": "Capacetes", "o": 1199.99, "sz": "56", "img": "s-035.webp", "p": 899.9, "cap": 1, "vis": false}, {"id": "041", "b": "Norisk", "n": "FF302 Soul II (Italia, Grand Prix Brazil/Germany)", "g": "Capacetes", "o": 1300.0, "sz": "54, 56, 58, 60", "img": "s-041.webp", "p": 899.9, "cap": 1, "vis": false}, {"id": "042", "b": "Norisk", "n": "FF802 Razor", "g": "Capacetes", "o": 599.99, "sz": "56, 58, 60, 62", "img": "s-042.webp", "p": 449.9, "cap": 1, "vis": false}, {"id": "043", "b": "Norisk", "n": "Flow (Robot, Special, Daytona, Pulse)", "g": "Capacetes", "o": 899.9, "sz": "56, 58, 60", "img": "s-043.webp", "p": 699.9, "cap": 1, "vis": false}, {"id": "044", "b": "Norisk", "n": "Force II Kore Silver", "g": "Capacetes", "o": 899.99, "sz": "58", "img": "s-044.webp", "p": 720.0, "cap": 1, "vis": false}, {"id": "045", "b": "Norisk", "n": "Orion (Denver, Free, Shine)", "g": "Capacetes", "o": 549.9, "sz": "56, 58, 60", "img": "s-045.webp", "p": 329.9, "cap": 1, "vis": false}, {"id": "048", "b": "Norisk", "n": "Strada II Matte Black", "g": "Capacetes", "o": 899.9, "sz": "58", "img": "s-048.webp", "p": 699.9, "cap": 1, "vis": false}, {"id": "049", "b": "Origine", "n": "Pista", "g": "Capacetes", "o": 800.0, "sz": "56, 58, 60", "img": "s-049.webp", "p": 649.9, "cap": 1, "vis": false}, {"id": "050", "b": "Peels", "n": "Mirage F21 Classic", "g": "Capacetes", "o": 549.9, "sz": "58", "img": "s-050.webp", "p": 379.9, "cap": 1, "vis": false}, {"id": "051", "b": "Race Tech", "n": "Hit", "g": "Capacetes", "o": 349.9, "sz": "56, 58, 62", "img": "s-051.webp", "p": 295.0, "cap": 1, "pv": 279.9, "vis": false}, {"id": "052", "b": "Race Tech", "n": "Sector (Grid, Exílio, Slash)", "g": "Capacetes", "o": 549.9, "sz": "56, 58, 60", "img": "s-052.webp", "p": 389.9, "cap": 1, "vis": false}, {"id": "053", "b": "Race Tech", "n": "Volt", "g": "Capacetes", "o": 599.9, "sz": "56, 58", "img": "s-053.webp", "p": 474.9, "cap": 1, "vis": false}, {"id": "055", "b": "Texx", "n": "Hunter Monocolor Matte Black", "g": "Capacetes", "o": 549.9, "sz": "60", "img": "s-055.webp", "p": 399.9, "cap": 1, "vis": false}, {"id": "056", "b": "Texx", "n": "Strike Superstar", "g": "Capacetes", "o": 499.9, "sz": "56, 58, 60", "img": "s-056.webp", "p": 299.9, "cap": 1, "vis": false}, {"id": "061", "b": "Alpinestars", "n": "Camiseta Vermelha", "g": "Vestuário", "o": 179.99, "sz": "G", "img": "s-061.webp", "v": 152.99, "k": 161.99}, {"id": "062", "b": "LS2", "n": "Jaqueta Airy", "g": "Vestuário", "o": 699.9, "sz": "M", "img": "s-062.webp", "v": 594.92, "k": 629.91}, {"id": "063", "b": "LS2", "n": "Jaqueta Breeze", "g": "Vestuário", "o": 749.9, "sz": "L, XL", "img": "s-063.webp", "v": 637.42, "k": 674.91}, {"id": "064", "b": "LS2", "n": "Jaqueta Zoom", "g": "Vestuário", "o": 999.9, "sz": "L, XL", "img": "s-064.webp", "v": 849.92, "k": 899.91}, {"id": "065", "b": "Norisk", "n": "Macacão NR SS Preto/Branco", "g": "Vestuário", "o": 3999.99, "sz": "54, 58", "img": "s-065.webp", "v": 3399.99, "k": 3599.99}, {"id": "066", "b": "Texx", "n": "Camiseta Segunda Pele Season", "g": "Vestuário", "o": 99.9, "sz": "M", "img": "", "v": 84.92, "k": 89.91}, {"id": "067", "b": "Texx", "n": "Jaqueta Ronin Air V2", "g": "Vestuário", "o": 499.9, "sz": "2G", "img": "s-067.webp", "v": 424.92, "k": 449.91}, {"id": "068", "b": "X11", "n": "Blusa Climate 1", "g": "Vestuário", "o": 119.9, "sz": "G, 3G", "img": "s-068.webp", "v": 101.92, "k": 107.91}, {"id": "069", "b": "X11", "n": "Blusa Climate 2", "g": "Vestuário", "o": 139.99, "sz": "M", "img": "s-069.webp", "v": 118.99, "k": 125.99}, {"id": "070", "b": "X11", "n": "Jaqueta Guard 3 (masc. e fem.)", "g": "Vestuário", "o": 599.9, "sz": "M, G, GG, 2G", "img": "s-070.webp", "v": 509.92, "k": 539.91}, {"id": "071", "b": "X11", "n": "Jaqueta Super Air (masc. e fem.)", "g": "Vestuário", "o": 449.9, "sz": "M, G", "img": "s-071.webp", "v": 382.42, "k": 404.91}, {"id": "072", "b": "X11", "n": "Luva Blackout 2", "g": "Vestuário", "o": 119.9, "sz": "P, 3G", "img": "s-072.webp", "v": 101.92, "k": 107.91}, {"id": "073", "b": "X11", "n": "Luva Blackout meio dedo", "g": "Vestuário", "o": 99.9, "sz": "G", "img": "s-073.webp", "v": 84.92, "k": 89.91}, {"id": "074", "b": "X11", "n": "Luva Drytech", "g": "Vestuário", "o": 179.9, "sz": "G, GG", "img": "s-074.webp", "v": 152.92, "k": 161.91}, {"id": "075", "b": "X11", "n": "Luva Fit X", "g": "Vestuário", "o": 84.9, "sz": "P, M, 3G", "img": "s-075.webp", "v": 72.17, "k": 76.41}, {"id": "076", "b": "X11", "n": "Luva Fit X meio dedo", "g": "Vestuário", "o": 84.9, "sz": "M, G", "img": "s-076.webp", "v": 72.17, "k": 76.41}, {"id": "077", "b": "X11", "n": "Luva Nitro 4", "g": "Vestuário", "o": 149.9, "sz": "", "img": "s-077.webp", "v": 127.42, "k": 134.91}, {"id": "078", "b": "X11", "n": "Luva Route 2", "g": "Vestuário", "o": 269.9, "sz": "P, G, GG, 3G", "img": "s-078.webp", "v": 229.42, "k": 242.91}, {"id": "079", "b": "Alba", "n": "Conjunto de chuva Europa PVC (masc. e fem.)", "g": "Vestuário", "o": 199.99, "sz": "P, M, G, GG, EXTRA G", "img": "s-079.webp", "v": 169.99, "k": 179.99}, {"id": "080", "b": "Pantaneiro", "n": "Capa de chuva nylon", "g": "Vestuário", "o": 199.9, "sz": "P, GG", "img": "s-080.webp", "v": 169.92, "k": 179.91}, {"id": "081", "b": "Pantaneiro", "n": "Capa de chuva PVC", "g": "Vestuário", "o": 129.9, "sz": "G, GG, EX", "img": "s-081.webp", "v": 110.42, "k": 116.91}, {"id": "082", "b": "", "n": "Conjunto de chuva nylon com gola", "g": "Vestuário", "o": 209.9, "sz": "M, G, EX", "img": "", "v": 178.42, "k": 188.91}, {"id": "083", "b": "", "n": "Intercomunicador Y15", "g": "Acessórios", "o": 100.0, "sz": "", "img": "s-083.webp", "v": 85.0, "k": 90.0}, {"id": "084", "b": "", "n": "Capa de moto PVC forrada com feltro", "g": "Acessórios", "o": 199.9, "sz": "GG", "img": "s-084.webp", "v": 169.92, "k": 179.91}, {"id": "085", "b": "", "n": "Antena corta-pipa 2 estágios (guidão)", "g": "Acessórios", "o": 29.9, "sz": "", "img": "s-085.webp", "v": 25.42, "k": 26.91}, {"id": "086", "b": "", "n": "Antena corta-pipa 5 estágios (retrovisor)", "g": "Acessórios", "o": 51.9, "sz": "", "img": "s-086.webp", "v": 44.12, "k": 46.71}, {"id": "087", "b": "", "n": "Antena corta-pipa 6 estágios (guidão)", "g": "Acessórios", "o": 54.9, "sz": "", "img": "s-087.webp", "v": 46.67, "k": 49.41}, {"id": "088", "b": "", "n": "Cadeado espiral 12 x 100 cm", "g": "Acessórios", "o": 38.0, "sz": "", "img": "s-088.webp", "v": 32.3, "k": 34.2}, {"id": "089", "b": "", "n": "Cadeado 3,5 x 80 cm com corrente", "g": "Acessórios", "o": 39.9, "sz": "", "img": "s-089.webp", "v": 33.92, "k": 35.91}, {"id": "090", "b": "", "n": "Manopla", "g": "Acessórios", "o": 34.9, "sz": "", "img": "s-090.webp", "v": 29.67, "k": 31.41}, {"id": "091", "b": "Vallen", "n": "Viseira cromada", "g": "Acessórios", "o": 69.9, "sz": "", "img": "s-091.webp", "v": 59.42, "k": 62.91}, {"id": "093", "b": "", "n": "Narigueira universal", "g": "Acessórios", "o": 45.0, "sz": "", "img": "s-093.webp", "v": 38.25, "k": 40.5}, {"id": "094", "b": "Honda", "n": "Frente Fan 160 / Titan 160 (várias cores)", "g": "Peças", "o": 269.9, "sz": "", "img": "s-094.webp", "v": 229.42, "k": 242.91}, {"id": "095", "b": "Honda", "n": "Carenagem Pop 110i 2009/2023", "g": "Peças", "o": 425.0, "sz": "", "img": "s-095.webp", "v": 361.25, "k": 382.5}];
+const GROUPS=[["Capacetes","Preço de Black Friday em destaque"],["Vestuário","15% off à vista ou 10% no cartão"],["Acessórios","15% off à vista ou 10% no cartão"],["Peças","15% off à vista ou 10% no cartão"]];
+const GL='categoria';
+const WA="5598987165833";
+const brl=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const BRANDS=[...new Set(ITEMS.map(i=>i.b).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt'));
+let cur="Todos",brand="Todas",view="grupo";
+const chips=document.getElementById('chips'),ctl=document.getElementById('ctl'),main=document.getElementById('main');
+const val=it=>it.cap?(it.pv||it.p):it.v;
+const pct=it=>Math.round((1-val(it)/it.o)*100);
+const slug=s=>s.normalize('NFD').replace(/[^\w]/g,'').toLowerCase();
+function card(it){
+  const nm=(it.b?it.b+' ':'')+it.n;
+  const msg=encodeURIComponent(`Olá! Tenho interesse no ${nm} da Black Friday Capacete Ilha São Luís.`);
+  const info=it.sz?`Tam. ${it.sz}`:'';
+  let price;
+  if(it.cap&&it.pv) price=`<div class="was">De <s>R$ ${brl(it.o)}</s></div><div class="lab">À vista</div><div class="now"><small>R$</small>${brl(it.pv)}</div><div class="cart"><span>No cartão</span><b>R$ ${brl(it.p)}</b></div>`;
+  else if(it.cap) price=`<div class="was">De <s>R$ ${brl(it.o)}</s></div><div class="now"><small>R$</small>${brl(it.p)}</div>`;
+  else price=`<div class="was">De <s>R$ ${brl(it.o)}</s></div><div class="lab">À vista · 15% off</div><div class="now"><small>R$</small>${brl(it.v)}</div><div class="cart"><span>No cartão · 10% off</span><b>R$ ${brl(it.k)}</b></div>`;
+  const ph=it.img?`<img loading="lazy" src="${it.img}" alt="${nm}">`:`<div class="nofoto">${it.b||it.g}</div>`;
+  return `<article class="card"><div class="ph">${ph}</div><span class="off">-${pct(it)}%</span><div class="bd"><div class="br">${it.b||'&nbsp;'}</div><div class="nm">${it.n}</div><div class="tg">${info||'&nbsp;'}</div>${price}${it.vis?'<span class="vis">Não acompanha viseira colorida</span>':''}<div class="sp"></div><a class="wa" href="https://wa.me/${WA}?text=${msg}" target="_blank" rel="noopener"><span class="lg">Chamar no&nbsp;</span>WhatsApp</a></div></article>`;
+}
+function sec(title,desc,l){return `<section class="sec" id="${slug(title)}"><h2>${title}</h2><p class="d">${desc?desc+' · ':''}${l.length} ${l.length>1?'produtos':'produto'}</p><div class="grid">${l.map(card).join('')}</div></section>`}
+function render(){
+  const gs=GROUPS.filter(g=>ITEMS.some(i=>i.g===g[0]));
+  chips.innerHTML=['Todos',...gs.map(g=>g[0])].map(g=>`<button class="chip" aria-pressed="${g===cur}" data-g="${g}">${g}</button>`).join('');
+  const bl=BRANDS.filter(b=>ITEMS.some(i=>i.b===b&&(cur==='Todos'||i.g===cur)));
+  if(brand!=='Todas'&&!bl.includes(brand))brand='Todas';
+  ctl.innerHTML=`<select class="sel" id="brand" aria-label="Marca"><option value="Todas">Todas as marcas</option>${bl.map(b=>`<option>${b}</option>`).join('')}</select>
+  <select class="sel" id="view" aria-label="Organizar"><option value="grupo">Separar por ${GL}</option><option value="marca">Separar por marca</option><option value="off">Maior desconto</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select>`;
+  document.getElementById('brand').value=brand;document.getElementById('view').value=view;
+  const list=ITEMS.filter(it=>(cur==='Todos'||it.g===cur)&&(brand==='Todas'||it.b===brand));
+  if(!list.length){main.innerHTML='<section class="sec"><p class="empty">Nenhum produto nesse filtro.</p></section>';return}
+  if(view==='grupo') main.innerHTML=gs.map(([g,d])=>{const l=list.filter(it=>it.g===g);return l.length?sec(g,d,l):''}).join('');
+  else if(view==='marca') main.innerHTML=[...bl,''].map(b=>{const l=list.filter(it=>it.b===b);return l.length?sec(b||'Outros','',l):''}).join('');
+  else{const l=[...list].sort((a,b)=>view==='off'?pct(b)-pct(a):view==='low'?val(a)-val(b):val(b)-val(a));main.innerHTML=sec('Todos os produtos','',l)}
+}
+chips.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;cur=b.dataset.g;render()});
+ctl.addEventListener('change',e=>{if(e.target.id==='brand')brand=e.target.value;if(e.target.id==='view')view=e.target.value;render()});
+render();
+}
+</script>
+</body>
+</html>
