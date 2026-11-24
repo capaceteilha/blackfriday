@@ -115,11 +115,11 @@ function card(it){
 }
 function sec(id,title,desc,l){return `<section class="sec" id="${id}"><h2>${title}</h2><p class="d">${desc?desc+' · ':''}${l.length} ${l.length>1?'produtos':'produto'}</p><div class="grid">${l.map(card).join('')}</div></section>`}
 function render(){
-  chips.innerHTML=['Todos',...GROUPS.map(g=>g[0])].map(g=>`<button class="chip" aria-pressed="${g===cur}" data-g="${g}">${g}</button>`).join('');
+  chips.innerHTML=['Todos','Capacetes','Vestuário',...GROUPS.map(g=>g[0])].map(g=>`<button class="chip" aria-pressed="${g===cur}" data-g="${g}">${g}</button>`).join('');
   ctl.innerHTML=`<select class="sel" id="brand" aria-label="Marca"><option value="Todas">Todas as marcas</option>${BRANDS.map(b=>`<option>${b}</option>`).join('')}</select>
   <select class="sel" id="view" aria-label="Organizar"><option value="grupo">Separar por categoria</option><option value="marca">Separar por marca</option><option value="off">Maior desconto</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select>`;
   document.getElementById('brand').value=brand;document.getElementById('view').value=view;
-  const list=ITEMS.filter(it=>(cur==='Todos'||it.g===cur)&&(brand==='Todas'||it.b===brand));
+  const list=ITEMS.filter(it=>(cur==='Todos'||(cur==='Capacetes'?it.dep==='cap':cur==='Vestuário'?it.dep==='vest':it.g===cur))&&(brand==='Todas'||it.b===brand));
   if(!list.length){main.innerHTML='<section class="sec"><p class="empty">Nenhum produto nesse filtro.</p></section>';return}
   if(view==='grupo') main.innerHTML=GROUPS.map(([g,desc])=>{const l=list.filter(it=>it.g===g);return l.length?sec(slug(g),g,desc,l):''}).join('');
   else if(view==='marca'){const bs=[...new Set(list.map(i=>i.b))].sort((a,b)=>a.localeCompare(b,'pt'));main.innerHTML=bs.map(b=>sec('m'+slug(b),b,'',list.filter(it=>it.b===b))).join('')}
